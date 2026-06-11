@@ -1,0 +1,21 @@
+Problem: Predict  whether an applicant's loan will be approved based on their demographics, income, and credit history.
+
+Executive Summary: Loan Approval Prediction
+Based on exploratory data analysis and machine learning models, we can successfully predict whether an applicant will be approved for a loan with ~79% accuracy. Here is the breakdown of what actually drives the bank's decision:
+
+1. Credit History is the Ultimate Dealbreaker
+The bivariate analysis revealed that Credit_History is the single most important factor. If an applicant has a bad credit history (0), they are almost guaranteed to be denied, regardless of how much money they make. If they have a good credit history (1), their will have a higher chances of approval.
+
+2. Demographics Provide an Edge
+Demographics play a noticeable supporting role. For instance, we found that Married applicants have a significantly higher approval rate than unmarried applicants. This typically signals financial stability and the benefit of dual-income households to the banking algorithm.
+
+3. Income Needs Context
+While income is important, raw ApplicantIncome was highly skewed by a few incredibly wealthy extreme outliers. It was found that the bank cares more about the Total Household Income (Applicant + Co-applicant). By combining these and applying a Log Transformation, we smoothed out the extreme wealth gaps, allowing the model to evaluate normal middle-class incomes much more fairly.
+
+4. Model Reliability & Business Risk
+We tested both a Random Forest and a Logistic Regression model. The simpler Logistic Regression won with an accuracy of 78.86%.
+
+The Good News: The model is highly generous and almost never mistakenly denies a good customer (99% Recall for approvals).
+The Business Risk: Because historical data had far more approvals than denials, the model is slightly biased toward saying "Yes." It occasionally approves risky customers (only a 42% Recall for identifying bad loans).
+Conclusion:
+If an applicant walks into the bank today, our model will confidently approve them if they are married, have a steady combined household income, and—most importantly—have a flawless credit history!
